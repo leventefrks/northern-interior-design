@@ -36,12 +36,25 @@ export default {
   data() {
     return {
       isAppMenuVisible: false,
+      isScrollingAllowed: true,
     };
+  },
+
+  computed: {
+    isFullScreenDisabled() {
+      return this.isAppMenuVisible ? false : true;
+    },
   },
 
   methods: {
     showAppMenu() {
       this.isAppMenuVisible = !this.isAppMenuVisible;
+      this.onSetFullPageMovement();
+    },
+
+    onSetFullPageMovement() {
+      fullpage_api.setAllowScrolling(this.isFullScreenDisabled);
+      fullpage_api.setKeyboardScrolling(this.isFullScreenDisabled);
     },
   },
 };

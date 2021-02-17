@@ -1,11 +1,13 @@
 <template lang="html">
   <div class="app-menu">
-    <div>
-      <g-link to="/">home.</g-link>
-      <g-link to="/work">works.</g-link>
-      <g-link to="/contact">contact.</g-link>
-      <g-link to="/about">about.</g-link>
-    </div>
+    <transition name="fade">
+      <div>
+        <g-link to="/">home.</g-link>
+        <g-link to="/work">works.</g-link>
+        <g-link to="/contact">contact.</g-link>
+        <g-link to="/about">about.</g-link>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -49,5 +51,18 @@ export default {
       }
     }
   }
+}
+
+.delay-enter-active {
+  transition-duration: 5s;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.delay-leave-active {
+  transition: opacity 0.3s ease-out;
+}
+.delay-enter,
+.delay-leave-to {
+  opacity: 0;
 }
 </style>
